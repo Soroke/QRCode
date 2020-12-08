@@ -14,10 +14,18 @@ mvn clean install
 ```shell script
 java -jar XXX.jar "http://www.baidu.com"
 ```
-#### 2、指定url路径和二维码文件存放路径
+#### 2、指定url路径和logo绝对路径/二维码文件存放路径
+
+- 指定生成二维码路径
 ```shell script
 java -jar XXX.jar "http://www.baidu.com" "/usr/local/"
 ```
+
+- 指定生成带logo的二维码
+```shell script
+java -jar XXX.jar "http://www.baidu.com" "/tmp/log.png"
+```
+
 #### 3、指定url路径和二维码文件存放路径 二维码文件名称
 ```shell script
 java -jar XXX.jar "http://www.baidu.com" "/usr/local/" "xxx.png"

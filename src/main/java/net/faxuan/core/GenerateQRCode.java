@@ -19,6 +19,7 @@ public class GenerateQRCode {
         QRCodeService qrCodeService = new QRCodeService();
         File file = new File(path,"qrcode.png");
         qrCodeService.encode(url,800,800,file);
+        System.out.println("二维码生成成功,文件路径：" + file.getPath());
     }
 
     /**
@@ -31,12 +32,26 @@ public class GenerateQRCode {
             System.err.println("url或路径为空");
         }
         //获取当前的目录
-//        String path = System.getProperty("user.dir");
+        String dirPath = System.getProperty("user.dir");
 //        System.out.println(path);
-        //生成二维码
+        File logFile = new File(path);
         QRCodeService qrCodeService = new QRCodeService();
-        File file = new File(path,"qrcode.png");
-        qrCodeService.encode(url,800,800,file);
+        if (logFile.isDirectory()) {
+            //生成二维码
+            File file = new File(path,"qrcode.png");
+            qrCodeService.encode(url,800,800,file);
+            System.out.println("二维码生成成功,文件路径：" + file.getPath());
+        } else if (logFile.isFile() ){
+            File file = new File(dirPath,"base_qrcode.png");
+            qrCodeService.encode(url,800,800,file);
+            File qrlogFile = new File(dirPath,"qrcode.png");
+            qrCodeService.encodeWithLogo(file,logFile,qrlogFile);
+            file.deleteOnExit();
+            System.out.println("二维码生成成功,文件路径：" + qrlogFile.getPath());
+        } else {
+            System.err.println("logo文件路径错误,无法识别文件");
+        }
+
     }
 
     /**
@@ -56,6 +71,7 @@ public class GenerateQRCode {
         QRCodeService qrCodeService = new QRCodeService();
         File file = new File(path,name);
         qrCodeService.encode(url,800,800,file);
+        System.out.println("二维码生成成功,文件路径：" + file.getPath());
     }
 
     /**
@@ -75,6 +91,7 @@ public class GenerateQRCode {
         QRCodeService qrCodeService = new QRCodeService();
         File file = new File(path,"qrcode.png");
         qrCodeService.encode(url,width,heigth,file);
+        System.out.println("二维码生成成功,文件路径：" + file.getPath());
     }
 
     /**
@@ -95,6 +112,7 @@ public class GenerateQRCode {
         QRCodeService qrCodeService = new QRCodeService();
         File file = new File(path,"qrcode.png");
         qrCodeService.encode(url,width,heigth,file);
+        System.out.println("二维码生成成功,文件路径：" + file.getPath());
     }
 
     /**
@@ -116,6 +134,7 @@ public class GenerateQRCode {
         QRCodeService qrCodeService = new QRCodeService();
         File file = new File(path,name);
         qrCodeService.encode(url,width,heigth,file);
+        System.out.println("二维码生成成功,文件路径：" + file.getPath());
     }
 
 
