@@ -1,0 +1,19 @@
+version: "3"
+services:
+  soga:
+    image: sprov065/soga:latest
+    restart: on-failure
+    network_mode: host
+    environment:
+      type: sspanel-uim
+      server_type: ssr
+      api: webapi
+      webapi_url: https://apple.soroke.top/
+      webapi_key: soroke
+      node_id: 6
+      cert_domain: aaa.com
+      cert_mode: http
+      force_close_ssl: 'false'              # 填写 false 或 true 参数值时需要加引号
+      forbidden_bit_torrent: 'false'         # 填写 false 或 true 参数值时需要加引号
+    volumes:
+      - "/etc/soga/:/etc/soga/"
