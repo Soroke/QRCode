@@ -94,5 +94,5 @@ fi
 sudo curl -L https://github.com/docker/compose/releases/download/1.29.1/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose
 sudo chmod +x /usr/bin/docker-compose
 #下载配置文件
-wget https://raw.githubusercontent.com/Soroke/QRCode/master/src/test/java/docker-compose.yml
+curl -O https://raw.githubusercontent.com/Soroke/QRCode/master/src/test/java/docker-compose.yml
 	
