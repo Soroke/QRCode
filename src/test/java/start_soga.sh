@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #判断系统信息
 Get_Dist_Name(){
