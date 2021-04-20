@@ -103,14 +103,14 @@ if [ $# -eq 4 ];then
 		mkdir ssr
 	fi
 	/bin/echo -e $ymlFile > ssr/docker-composer.yml
-	cd ssr && docker-compose up -d
+	#cd ssr && docker-compose up -d
 elif [ $# -eq 5 ];then
 	ymlFile="version: \"3\"\nservices:\n\tsoga:\n\t\timage: sprov065/soga:latest\n\t\trestart: on-failure\n\t\tnetwork_mode: host\n\t\tenvironment:\n\t\t\ttype: sspanel-uim\n\t\t\tserver_type: $1\n\t\t\tapi: webapi\n\t\t\twebapi_url: $2\n\t\t\twebapi_key: $3\n\t\t\tnode_id: $4\n\t\t\tcert_domain: $5\n\t\t\tcert_mode: http\n\t\t\tforce_close_ssl: 'false'\n\t\t\tforbidden_bit_torrent: 'true'\n\t\tvolumes:\n\t\t\t- \"/etc/soga/:/etc/soga/\""
 	if [ ! -d "trojan" ];then
 		mkdir trojan
 	fi
 	/bin/echo -e $ymlFile > trojan/docker-composer.yml
-	cd trojan && docker-compose up -d
+	#cd trojan && docker-compose up -d
 else
 	/bin/echo -e $ymlFile > docker-composer.yml
 	/bin/echo -e "参数数量不正确,请手动修改配置:./docker-composer.yml\n\tssr格式：ssr https://xxx.com/ key node_id\n\ttrojan格式：trojan https://xxx.com/ key node_id cert_domain"
